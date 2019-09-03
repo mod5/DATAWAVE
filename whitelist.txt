@@ -1,0 +1,4 @@
+# Test whitelist file
+explorer
+winlogon
+notepad
