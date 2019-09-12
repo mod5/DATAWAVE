@@ -1,0 +1,165 @@
+7739ee20 8bff           mov     edi, edi
+7739ee22 55             push    ebp
+7739ee23 8bec           mov     ebp, esp
+7739ee25 6afe           push    0FFFFFFFEh
+7739ee27 6878f34577     push    offset ntdll!QueryRegistryValue+0xa93 (7745f378)
+7739ee2c 68f02b3d77     push    offset ntdll!_except_handler4 (773d2bf0)
+7739ee31 64a100000000   mov     eax, dword ptr fs:[00000000h]
+7739ee37 50             push    eax
+7739ee38 83ec18         sub     esp, 18h
+7739ee3b 53             push    ebx
+7739ee3c 56             push    esi
+7739ee3d 57             push    edi
+7739ee3e a160d34777     mov     eax, dword ptr [ntdll!__security_cookie (7747d360)]
+7739ee43 3145f8         xor     dword ptr [ebp-8], eax
+7739ee46 33c5           xor     eax, ebp
+7739ee48 50             push    eax
+7739ee49 8d45f0         lea     eax, [ebp-10h]
+7739ee4c 64a300000000   mov     dword ptr fs:[00000000h], eax
+7739ee52 8965e8         mov     dword ptr [ebp-18h], esp
+7739ee55 8bfa           mov     edi, edx
+7739ee57 894de4         mov     dword ptr [ebp-1Ch], ecx
+7739ee5a 6840854777     push    offset ntdll!LdrpTlsLock (77478540)
+7739ee5f e8ecdb0000     call    ntdll!RtlAcquireSRWLockShared (773aca50)
+7739ee64 8b35d0534777   mov     esi, dword ptr [ntdll!LdrpTlsList (774753d0)]
+7739ee6a 81fed0534777   cmp     esi, offset ntdll!LdrpTlsList (774753d0)
+7739ee70 740f           je      ntdll!LdrpCallTlsInitializers+0x61 (7739ee81)
+7739ee72 397e20         cmp     dword ptr [esi+20h], edi
+7739ee75 740c           je      ntdll!LdrpCallTlsInitializers+0x63 (7739ee83)
+7739ee77 8b36           mov     esi, dword ptr [esi]
+7739ee79 81fed0534777   cmp     esi, offset ntdll!LdrpTlsList (774753d0)
+7739ee7f 75f1           jne     ntdll!LdrpCallTlsInitializers+0x52 (7739ee72)
+7739ee81 33f6           xor     esi, esi
+7739ee83 6840854777     push    offset ntdll!LdrpTlsLock (77478540)
+7739ee88 e8f3da0000     call    ntdll!RtlReleaseSRWLockShared (773ac980)
+7739ee8d 85f6           test    esi, esi
+7739ee8f 741c           je      ntdll!LdrpCallTlsInitializers+0x8d (7739eead)
+7739ee91 8b7614         mov     esi, dword ptr [esi+14h]
+7739ee94 85f6           test    esi, esi
+7739ee96 7415           je      ntdll!LdrpCallTlsInitializers+0x8d (7739eead)
+7739ee98 c745fc00000000 mov     dword ptr [ebp-4], 0
+7739ee9f 90             nop     
+7739eea0 8b1e           mov     ebx, dword ptr [esi]
+7739eea2 85db           test    ebx, ebx
+7739eea4 7519           jne     ntdll!LdrpCallTlsInitializers+0x9f (7739eebf)
+7739eea6 c745fcfeffffff mov     dword ptr [ebp-4], 0FFFFFFFEh
+7739eead 8b4df0         mov     ecx, dword ptr [ebp-10h]
+7739eeb0 64890d00000000 mov     dword ptr fs:[0], ecx
+7739eeb7 59             pop     ecx
+7739eeb8 5f             pop     edi
+7739eeb9 5e             pop     esi
+7739eeba 5b             pop     ebx
+7739eebb 8be5           mov     esp, ebp
+7739eebd 5d             pop     ebp
+7739eebe c3             ret     
+7739eebf 895de0         mov     dword ptr [ebp-20h], ebx
+7739eec2 83c604         add     esi, 4
+7739eec5 8975dc         mov     dword ptr [ebp-24h], esi
+7739eec8 f6059057477705 test    byte ptr [ntdll!LdrpDebugFlags (77475790)], 5
+7739eecf 0f852be90400   jne     ntdll!LdrpCallTlsInitializers+0x4e9e0 (773ed800)
+7739eed5 6a00           push    0
+7739eed7 ff75e4         push    dword ptr [ebp-1Ch]
+7739eeda 8b5718         mov     edx, dword ptr [edi+18h]
+7739eedd 8bcb           mov     ecx, ebx
+7739eedf e86d120000     call    ntdll!LdrpCallInitRoutine (773a0151)
+7739eee4 ebba           jmp     ntdll!LdrpCallTlsInitializers+0x80 (7739eea0)
+7739eee6 cc             int     3
+7739eee7 cc             int     3
+7739eee8 cc             int     3
+7739eee9 cc             int     3
+7739eeea cc             int     3
+7739eeeb cc             int     3
+7739eeec cc             int     3
+7739eeed cc             int     3
+7739eeee cc             int     3
+7739eeef cc             int     3
+7739eef0 8bff           mov     edi, edi
+7739eef2 55             push    ebp
+7739eef3 8bec           mov     ebp, esp
+7739eef5 83ec64         sub     esp, 64h
+7739eef8 a160d34777     mov     eax, dword ptr [ntdll!__security_cookie (7747d360)]
+7739eefd 33c5           xor     eax, ebp
+7739eeff 8945fc         mov     dword ptr [ebp-4], eax
+7739ef02 56             push    esi
+7739ef03 8b7508         mov     esi, dword ptr [ebp+8]
+7739ef06 8d459c         lea     eax, [ebp-64h]
+7739ef09 50             push    eax
+7739ef0a 6a50           push    50h
+7739ef0c 8d45ac         lea     eax, [ebp-54h]
+7739ef0f 50             push    eax
+7739ef10 6a01           push    1
+7739ef12 6afa           push    0FFFFFFFAh
+7739ef14 e8c7bb0200     call    ntdll!NtQueryInformationToken (773caae0)
+7739ef19 85c0           test    eax, eax
+7739ef1b 7871           js      ntdll!RtlFormatCurrentUserKeyPath+0x9e (7739ef8e)
+7739ef1d 8d45a0         lea     eax, [ebp-60h]
+7739ef20 50             push    eax
+7739ef21 ff75ac         push    dword ptr [ebp-54h]
+7739ef24 e897000000     call    ntdll!RtlLengthSidAsUnicodeString (7739efc0)
+7739ef29 85c0           test    eax, eax
+7739ef2b 7861           js      ntdll!RtlFormatCurrentUserKeyPath+0x9e (7739ef8e)
+7739ef2d 57             push    edi
+7739ef2e 8b7da0         mov     edi, dword ptr [ebp-60h]
+7739ef31 33c0           xor     eax, eax
+7739ef33 668906         mov     word ptr [esi], ax
+7739ef36 8d4722         lea     eax, [edi+22h]
+7739ef39 66894602       mov     word ptr [esi+2], ax
+7739ef3d 0fb7c0         movzx   eax, ax
+7739ef40 50             push    eax
+7739ef41 e87d460000     call    ntdll!NtdllpAllocateStringRoutine (773a35c3)
+7739ef46 894604         mov     dword ptr [esi+4], eax
+7739ef49 85c0           test    eax, eax
+7739ef4b 7452           je      ntdll!RtlFormatCurrentUserKeyPath+0xaf (7739ef9f)
+7739ef4d 6894543677     push    offset ntdll!`string' (77365494)
+7739ef52 56             push    esi
+7739ef53 e8f8050000     call    ntdll!RtlAppendUnicodeToString (7739f550)
+7739ef58 0fb70e         movzx   ecx, word ptr [esi]
+7739ef5b 33c0           xor     eax, eax
+7739ef5d 668945a4       mov     word ptr [ebp-5Ch], ax
+7739ef61 8b4604         mov     eax, dword ptr [esi+4]
+7739ef64 d1e9           shr     ecx, 1
+7739ef66 6a00           push    0
+7739ef68 ff75ac         push    dword ptr [ebp-54h]
+7739ef6b 66897da6       mov     word ptr [ebp-5Ah], di
+7739ef6f 8d0448         lea     eax, [eax+ecx*2]
+7739ef72 8945a8         mov     dword ptr [ebp-58h], eax
+7739ef75 8d45a4         lea     eax, [ebp-5Ch]
+7739ef78 50             push    eax
+7739ef79 e892000000     call    ntdll!RtlConvertSidToUnicodeString (7739f010)
+7739ef7e 8bf8           mov     edi, eax
+7739ef80 85ff           test    edi, edi
+7739ef82 7822           js      ntdll!RtlFormatCurrentUserKeyPath+0xb6 (7739efa6)
+7739ef84 668b45a4       mov     ax, word ptr [ebp-5Ch]
+7739ef88 660106         add     word ptr [esi], ax
+7739ef8b 8bc7           mov     eax, edi
+7739ef8d 5f             pop     edi
+7739ef8e 8b4dfc         mov     ecx, dword ptr [ebp-4]
+7739ef91 33cd           xor     ecx, ebp
+7739ef93 5e             pop     esi
+7739ef94 e877da0200     call    ntdll!__security_check_cookie (773cca10)
+7739ef99 8be5           mov     esp, ebp
+7739ef9b 5d             pop     ebp
+7739ef9c c20400         ret     4
+7739ef9f b8170000c0     mov     eax, 0C0000017h
+7739efa4 ebe7           jmp     ntdll!RtlFormatCurrentUserKeyPath+0x9d (7739ef8d)
+7739efa6 56             push    esi
+7739efa7 e8f4450000     call    ntdll!RtlFreeAnsiString (773a35a0)
+7739efac ebdd           jmp     ntdll!RtlFormatCurrentUserKeyPath+0x9b (7739ef8b)
+7739efae cc             int     3
+7739efaf cc             int     3
+7739efb0 cc             int     3
+7739efb1 cc             int     3
+7739efb2 cc             int     3
+7739efb3 cc             int     3
+7739efb4 cc             int     3
+7739efb5 cc             int     3
+7739efb6 cc             int     3
+7739efb7 cc             int     3
+7739efb8 cc             int     3
+7739efb9 cc             int     3
+7739efba cc             int     3
+7739efbb cc             int     3
+7739efbc cc             int     3
+7739efbd cc             int     3
+7739efbe cc             int     3
+7739efbf cc             int     3
